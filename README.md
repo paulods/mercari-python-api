@@ -35,7 +35,7 @@ git clone git@github.com:philipperemy/mercari-python-api.git
 cd mercari-python-api
 virtualenv -p python3.6 venv3.6
 pip install -r requirements.txt
-python setup.py install
+python setup.py install --user
 ```
 
 ## Monitoring

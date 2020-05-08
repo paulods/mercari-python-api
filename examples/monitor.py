@@ -79,6 +79,7 @@ class MonitorKeyword:
                                                   price_min=self.price_min,
                                                   price_max=self.price_max,
                                                   max_items_to_fetch=100)
+        logger.info('here')
         for item in persisted_items:
             logger.info(f'[{self.keyword}] CURRENT = {item}.')
 
@@ -92,7 +93,7 @@ class MonitorKeyword:
             for new_item in new_items:
                 logger.info(f'[{self.keyword}] NEW = {new_item}.')
                 persisted_items.append(new_item)
-                item = mercari.get_item_info(new_item)
+                item = mercari.get_item_info(f'https://www.mercari.com{new_item}')
                 email_subject = f'{item.name} {item.price}'
                 email_content = f'{item.url}<br/><br/>{item.desc}'
                 attachment = item.local_url

@@ -70,8 +70,15 @@ def fetch_all_items(keyword: str = 'hibiki 17',
 def fetch_items_pagination(keyword: str, page_id: int, price_min: int = None, price_max: int = None):
     soup = _get_soup(_get_mercari_jp_end_point(page_id, keyword, price_min=price_min, price_max=price_max))
     sleep(2)
+    if soup.find('h3', {'class': 'search-result-no-head'}):
+        logger.info('No more items to fetch.')
+        items = []
+        search_res_head_tag = None
+        return items, search_res_head_tag
     search_res_head_tag = soup.find('h2', {'class': 'search-result-head'})
     items = [s.find('a').attrs['href'] for s in soup.find_all('section', {'class': 'items-box'})]
+    for i in range(len(items)):
+        items[i] = items[i][:items[i].find('?_s')]
     return items, search_res_head_tag
 
 
