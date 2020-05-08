@@ -93,7 +93,7 @@ def get_item_info(item_url: str = 'https://item.mercari.com/jp/m72639077322/') -
     def filter_html_br(x):
         return isinstance(x, NavigableString)
 
-    desc = list(filter(filter_html_br, soup.find('div', {'class': 'item-description f14'})))
+    desc = list(filter(filter_html_br, soup.find('p', {'class': 'item-description-inner'})))
     desc = list(map(str, desc))
     desc = ''.join(desc)
 

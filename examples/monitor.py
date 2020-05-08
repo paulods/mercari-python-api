@@ -79,7 +79,6 @@ class MonitorKeyword:
                                                   price_min=self.price_min,
                                                   price_max=self.price_max,
                                                   max_items_to_fetch=100)
-        logger.info('here')
         for item in persisted_items:
             logger.info(f'[{self.keyword}] CURRENT = {item}.')
 
