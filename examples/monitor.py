@@ -98,7 +98,7 @@ class MonitorKeyword:
                 attachment = item.local_url
                 if self.gmail_sender is not None:
                     self.gmail_sender.send_email_notification(email_subject, email_content, attachment)
-            time.sleep(3*60) # delay 3 minutes between each loop.
+            sleep(3*60) # delay 3 minutes between each loop.
 
 
 def main():
@@ -113,7 +113,7 @@ def main():
         monitors.append(MonitorKeyword(keyword.strip(), min_price, max_price, gmail))
     for monitor in monitors:
         monitor.start()
-        time.sleep(30)  # delay the start between monitors.
+        sleep(30)  # delay the start between monitors.
     for monitor in monitors:
         monitor.join()
 
