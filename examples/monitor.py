@@ -113,7 +113,7 @@ def main():
         monitors.append(MonitorKeyword(keyword.strip(), min_price, max_price, gmail))
     for monitor in monitors:
         monitor.start()
-        sleep(5)  # delay the start between them.
+        time.sleep(5*60)  # delay the start between them.
     for monitor in monitors:
         monitor.join()
 
